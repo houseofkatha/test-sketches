@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Card</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap"
+        rel="stylesheet">
+
+    <!-- html2canvas for PNG export -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root">
+        <!-- Background Tiled Pattern -->
+        <div class="background-tiles" id="backgroundTiles"></div>
+
+        <div class="card-wrapper">
+            <!-- Left Arrow -->
+            <div class="flip-arrow left" onclick="flipCard()" title="Flip Card"></div>
+
+            <div class="card-container">
+                <div class="card-inner" id="cardInner">
+                    <!-- Front Side - Image + Message -->
+                    <div class="card-face card-front" id="cardFront">
+                        <div class="front-content">
+                            <div class="upload-area" id="uploadArea"
+                                onclick="document.getElementById('imageInput').click()">
+                                <div class="upload-placeholder" id="uploadPlaceholder">Click to upload image</div>
+                                <img id="uploadedImage" class="uploaded-image" style="display: none;">
+                            </div>
+                            <input type="file" id="imageInput" class="hidden-input" accept="image/*">
+
+                            <div class="front-message-area">
+                                <label>Message</label>
+                                <input type="text" class="front-message-text" id="frontMessageInput"
+                                    placeholder="INSERT MESSAGE">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back Side - Name, Date, Message, Signature, Stamp -->
+                    <div class="card-face card-back" id="cardBack">
+                        <div class="mail-header">
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input type="text" class="mail-input" id="nameInput" placeholder="YOUR NAME HERE">
+                            </div>
+                            <div class="input-group">
+                                <label>Date</label>
+                                <div class="mail-date" id="dateDisplay"></div>
+                            </div>
+                        </div>
+
+                        <div class="message-area">
+                            <label>Message</label>
+                            <textarea class="message-lines" id="messageInput"></textarea>
+                        </div>
+
+                        <div class="footer-area">
+                            <div class="signature-box" id="signatureBox">
+                                <span class="signature-label">Signature</span>
+                                <canvas id="signatureCanvas" width="300" height="100"></canvas>
+                            </div>
+
+                            <div class="stamp-box" id="stampBox">
+                                <div class="stamp-curved-text">
+                                    This message is brought to you by
+                                </div>
+                                <div class="stamp-text" id="stampText">INSERT NAME</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Arrow -->
+            <div class="flip-arrow right" onclick="flipCard()" title="Flip Card"></div>
+        </div>
+
+        <div class="controls">
+            <button onclick="randomizeColors()">Randomize Colors</button>
+            <button onclick="resetCard()">Reset</button>
+            <button onclick="saveAsPNG()">Save as PNG</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

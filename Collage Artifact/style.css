@@ -1,0 +1,437 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Lobster&family=Fredoka:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Bangers&family=Modak&family=Monoton&family=Bungee&family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+    /* DEFAULT THEME: Holiday */
+    --bg-gradient: linear-gradient(to bottom, #1e293b 0%, #0f172a 100%);
+    --primary-color: #fbbf24;
+    --text-color: #f8fafc;
+    --accent-color: #ef4444;
+    --font-heading: 'Great Vibes', cursive;
+    --frame-color: rgba(251, 191, 36, 0.3);
+
+    /* Global */
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-gradient);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    transition: background 1s ease;
+}
+
+/* Decorative Frame */
+body::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid var(--frame-color);
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 1;
+    transition: border-color 1s ease;
+}
+
+.app-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Scene --- */
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+}
+
+.passport-container {
+    position: relative;
+    width: 200px;
+    /* Aspect ratio height auto based on img */
+    z-index: 100;
+    /* Container is high */
+    cursor: pointer;
+    /* transition removed for instant switch */
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.6));
+    transform-style: preserve-3d;
+    /* Ensure 3d checks work */
+}
+
+.passport-container:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+.scene.active .passport-container {
+    transform: translateY(0) scale(1);
+}
+
+/* Stay center */
+
+.passport {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 50;
+    /* Passport Image stays on top of Elements */
+}
+
+/* Passport Data Overlay */
+.passport-data {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 60;
+    /* Above image */
+    pointer-events: none;
+}
+
+.passport-photo {
+    position: absolute;
+    top: 13.5%;
+    right: 10%;
+    /* Adjusted for right page */
+    width: 30%;
+    height: 60%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+    /* Better integration */
+    border-radius: 2px;
+    filter: grayscale(0.1) sepia(0.0);
+}
+
+.passport-name {
+    position: absolute;
+    bottom: 15%;
+    right: 0%;
+    width: 50%;
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    /* Monospaced look */
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    /* Prevent wrapping */
+}
+
+/* --- Elements --- */
+.elements-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    z-index: 10;
+    /* Strictly BELOW Passport Image(50) */
+}
+
+
+
+.floating-element {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Interaction for "tilt" */
+    transition-property: transform, opacity;
+    will-change: transform, opacity;
+}
+
+/* Active State */
+.scene.active .floating-element {
+    opacity: 1;
+    /* Maintain -50% centering while adding offsets */
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) rotate(var(--rot)) scale(var(--scale));
+    cursor: grab;
+    /* Enable grab cursor */
+    pointer-events: auto;
+    /* Allow interaction */
+}
+
+.scene.active .floating-element:active {
+    cursor: grabbing;
+    z-index: 90 !important;
+    transition: none;
+}
+
+/* Polaroids */
+.polaroid {
+    background: white;
+    padding: 10px 10px 35px 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    width: 200px;
+    /* Larger as requested */
+    border-radius: 4px;
+    z-index: 20;
+}
+
+.polaroid:hover {
+    z-index: 80;
+}
+
+/* Hover pop, but below passport(100) */
+
+.polaroid img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    background: #f1f5f9;
+}
+
+/* Emoji Elements */
+.emoji-element {
+    font-family: 'Noto Color Emoji', sans-serif;
+    font-size: 3rem;
+    z-index: 15;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+    cursor: default;
+}
+
+/* Text Reveal */
+.text-reveal {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease 0.5s;
+    /* Removed transform transition to avoid conflict with drag */
+    pointer-events: auto;
+    /* Enable interaction */
+    z-index: 100;
+    cursor: grab;
+    /* Top with passport */
+}
+
+.scene.active .text-reveal {
+    opacity: 1;
+    transform: translate(var(--tx, 0px), var(--ty, 0px));
+}
+
+.text-reveal h1 {
+    font-family: var(--font-heading);
+    font-size: var(--heading-size, 5rem);
+    color: var(--primary-color);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: font-family 0.5s, color 0.5s;
+}
+
+/* --- Controls (Bottom Right) --- */
+.controls-area {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    bottom: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 110;
+    /* Controls always accessible */
+    align-items: flex-end;
+}
+
+.btn-label-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 160px;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateX(-5px);
+}
+
+.main-action {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.theme-select-modal {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.theme-select-modal option {
+    background: #1e293b;
+    color: white;
+}
+
+/* Modal */
+.hidden {
+    display: none !important;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 200;
+    /* Top most */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #1e293b;
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 0;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalPop {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #475569;
+    background: #0f172a;
+    color: white;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input[type="text"]:focus {
+    border-color: var(--primary-color);
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.primary-btn {
+    background: var(--primary-color);
+    color: #0f172a;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: transform 0.1s;
+}
+
+.primary-btn:hover {
+    transform: scale(1.05);
+}

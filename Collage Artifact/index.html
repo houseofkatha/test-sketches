@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Code Sketch</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Main Scene -->
+        <div class="scene" id="scene">
+            <div class="passport-container" id="passport-container">
+                <img src="assets/passport.svg" alt="Indian Passport" class="passport" id="passport">
+
+                <!-- Overlay Data (Hidden by default) -->
+                <div id="passport-data" class="passport-data hidden">
+                    <img id="passport-photo-display" src="assets/Profile.jpg" alt="Photo" class="passport-photo">
+                    <div id="passport-name-display" class="passport-name">Mr. ABHISHEK SHARMA</div>
+                </div>
+
+                <!-- Elements Container (items injected via JS) -->
+                <div class="elements-container" id="elements-container"></div>
+            </div>
+
+            <div class="text-reveal" id="text-reveal">
+                <h1>Happy Holidays</h1>
+            </div>
+        </div>
+
+        <!-- Controls (Bottom Right) -->
+        <div class="controls-area">
+            <button id="edit-btn" class="control-btn main-action">
+                <span>✨ Customize Sketch</span>
+            </button>
+            <button id="export-btn" class="control-btn secondary-action">
+                <span>⬇️ Export</span>
+            </button>
+        </div>
+
+        <!-- Edit Modal -->
+        <div class="modal hidden" id="edit-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Customize Sketch</h2>
+                    <button class="close-btn" id="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- Theme Section moved here -->
+                    <div class="form-group">
+                        <label for="theme-select">Choose Theme</label>
+                        <select id="theme-select" class="theme-select-modal" title="Select Theme">
+                            <option value="holiday">🎄 Holiday</option>
+                            <option value="beach">🏖️ Beach</option>
+                            <option value="mountain">🏔️ Mountain</option>
+                            <option value="food">🍕 Foodie</option>
+                            <option value="party">🎉 Party</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passport-name-input">Name On Passport</label>
+                        <input type="text" id="passport-name-input" placeholder="Enter Name" value="Abhishek Sharma"
+                            style="margin-bottom: 8px;">
+
+                        <label for="passport-photo-input" style="margin-top: 8px; display:block;">Photo On
+                            Passport</label>
+                        <input type="file" id="passport-photo-input" accept="image/*">
+                    </div>
+
+                    <div class="form-group" id="text-section">
+                        <label for="custom-text">Greeting Text</label>
+                        <input type="text" id="custom-text" value="Happy Holidays">
+                    </div>
+
+                    <div class="form-group" id="image-section">
+                        <label>Photos for Collage (upload 6-12)</label>
+                        <div class="file-inputs">
+                            <input type="file" id="bulk-photo-upload" accept="image/*" multiple>
+                            <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">* If you select less than 6,
+                                images will be repeated to fill slots.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="save-btn" class="primary-btn">Update Sketch</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

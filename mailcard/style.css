@@ -52,7 +52,7 @@ button {
 }
 
 button:hover {
-    border-color: #646cff;
+    border-color: #ffffff;
 }
 
 button:focus,
@@ -378,7 +378,12 @@ button:focus-visible {
 
 .controls {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
 }
 
 .hidden-input {

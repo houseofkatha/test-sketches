@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLANK Interactive Sketch</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Three.js globally from a reliable CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- UI Overlay Layer -->
+    <div id="ui-layer">
+        
+        <!-- Top Text -->
+        <div class="top-text">
+            I'M <span id="editable-name" class="underline" contenteditable="true">BLANK</span>
+        </div>
+
+        <!-- Remix Button -->
+        <button id="remix-btn">REMIX</button>
+
+        <!-- Remix Menu -->
+        <div id="remix-menu" class="hidden">
+            <div class="menu-header">
+                <h3>REMIX MENU</h3>
+                <button id="close-menu">X</button>
+            </div>
+            
+            <div class="control-group">
+                <label>BACKGROUND COLOR</label>
+                <input type="color" id="bg-color-picker" value="#FF0000">
+            </div>
+
+            <div class="control-group">
+                <label>TEXT COLOR</label>
+                <input type="color" id="text-color-picker" value="#ffffff">
+            </div>
+
+            <div class="control-group">
+                <label>IMAGE</label>
+                <button id="upload-trigger">CHANGE IMAGE</button>
+                <input type="file" id="image-upload" accept="image/*" style="display: none;">
+            </div>
+
+            <div class="control-group">
+                <label>SHAPE</label>
+                <div class="shape-buttons">
+                    <button data-shape="plane" class="active">PLANE</button>
+                    <button data-shape="cube">CUBE</button>
+                    <button data-shape="sphere">SPHERE</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Text -->
+        <div class="bottom-text">
+            MOVE ME
+        </div>
+
+        <!-- Reset Button -->
+        <button id="reset-btn">RESET</button>
+
+        <!-- Export Button -->
+        <button id="export-btn">EXPORT</button>
+    </div>
+
+    <!-- The 3D Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Main Logic (Defer ensures it runs after HTML loads) -->
+    <script src="script.js" defer></script>
+</body>
+</html>

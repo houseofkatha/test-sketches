@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+    background-color: #FF0000;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* 3D Canvas */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+/* UI Layer */
+#ui-layer {
+    position: relative;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Pass clicks to 3D layer */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15vh 0;
+}
+
+/* Enable pointer events only for UI elements */
+#remix-btn, 
+#remix-menu, 
+.shape-buttons button, 
+#upload-trigger, 
+#bg-color-picker, 
+#text-color-picker,
+#close-menu,
+#editable-name {
+    pointer-events: auto;
+}
+
+/* Top Text */
+.top-text {
+    width: 100%;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    padding-bottom: 25%;
+}
+
+/* Editable Underline Area */
+.underline {
+    border-bottom: 6px solid white;
+    display: inline-block;
+    min-width: 50px; /* Minimum width so it doesn't disappear if empty */
+    width: auto;     /* Hugs the content */
+    outline: none;
+    cursor: text;
+    padding: 0 5px;
+}
+
+/* Bottom Text */
+.bottom-text {
+    width: 100%;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+/* Remix Button */
+#remix-btn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    padding: 12px 24px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-transform: uppercase;
+}
+
+#remix-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Remix Menu Overlay */
+#remix-menu {
+    position: absolute;
+    top: 80px;
+    left: 30px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+#remix-menu.hidden {
+    display: none;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#remix-menu h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+#close-menu {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+input[type="color"] {
+    width: 100%;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+
+.shape-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.shape-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.shape-buttons button.active {
+    background: white;
+    color: black;
+}
+
+#upload-trigger {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+#reset-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-100px);
+    padding: 12px 24px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    pointer-events: auto;
+    transition: transform 0.2s;
+    z-index: 100;
+}
+
+#reset-btn:hover {
+    transform: translateX(-100px) scale(1.05);
+}
+
+#export-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(5px);
+    padding: 12px 24px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    pointer-events: auto;
+    transition: transform 0.2s;
+    z-index: 100;
+}
+
+#export-btn:hover {
+    transform: translateX(5px) scale(1.05);
+}

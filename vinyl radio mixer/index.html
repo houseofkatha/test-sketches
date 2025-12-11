@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinyl Player</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>VINYL<br><span>PLAYER</span></h1>
+            </div>
+            <button class="remix-btn" id="remixBtn" title="Open Remix Panel">
+                🎨 REMIX
+            </button>
+        </header>
+
+        <!-- Main Player Section -->
+        <main class="main-content">
+            <!-- Vinyl Record Display -->
+            <div class="vinyl-section">
+                <div class="vinyl-container">
+                    <div class="vinyl-record" id="vinylRecord">
+                        <div class="vinyl-center">
+                            <div class="vinyl-label" id="vinylLabel">
+                                <div class="label-icon">🎵</div>
+                            </div>
+                        </div>
+                        <div class="vinyl-grooves"></div>
+                    </div>
+                    <div class="tonearm" id="tonearm"></div>
+                </div>
+            </div>
+
+            <!-- Track Info Display -->
+            <div class="track-info-section">
+                <div class="track-info">
+                    <h2 class="track-title" id="trackTitle">Track Title</h2>
+                    <p class="track-artist" id="trackArtist">Artist Name</p>
+                    <p class="track-album" id="trackAlbum">Album • Year</p>
+                </div>
+
+                <!-- Time Progress -->
+                <div class="time-section">
+                    <span class="time-current" id="currentTime">00:00</span>
+                    <div class="progress-container" id="progressContainer">
+                        <div class="progress-bar" id="progressBar"></div>
+                        <div class="progress-handle" id="progressHandle"></div>
+                    </div>
+                    <span class="time-total" id="duration">04:02</span>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="controls">
+                    <button class="control-btn" id="prevBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 5L7 12L19 19V5Z" fill="currentColor"/>
+                            <path d="M7 5V19" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+
+                    <button class="control-btn play-btn" id="playBtn">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" id="playIcon">
+                            <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+
+                    <button class="control-btn" id="nextBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 5L17 12L5 19V5Z" fill="currentColor"/>
+                            <path d="M17 5V19" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+
+                    <button class="control-btn gift-icon-btn" id="giftIconBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" id="giftIconSvg">
+                            <path d="M20 12V22H4V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 7H2V12H22V7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 22V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 7H7.5C6.83696 7 6.20107 6.73661 5.73223 6.26777C5.26339 5.79893 5 5.16304 5 4.5C5 3.83696 5.26339 3.20107 5.73223 2.73223C6.20107 2.26339 6.83696 2 7.5 2C11 2 12 7 12 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 7H16.5C17.163 7 17.7989 6.73661 18.2678 6.26777C18.7366 5.79893 19 5.16304 19 4.5C19 3.83696 18.7366 3.20107 18.2678 2.73223C17.7989 2.26339 17.163 2 16.5 2C13 2 12 7 12 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <button class="control-btn" id="repeatBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M17 1L21 5L17 9M7 23L3 19L7 15M21 5H7C4.79086 5 3 6.79086 3 9V12M3 19H17C19.2091 19 21 17.2091 21 15V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Volume Control -->
+                <div class="volume-section">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="volume-icon">
+                        <path d="M11 5L6 9H2V15H6L11 19V5Z" fill="currentColor"/>
+                        <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 11.995C17.0039 13.3208 16.4774 14.5924 15.54 15.53" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="70">
+                </div>
+            </div>
+        </main>
+
+        <!-- Playlist Section -->
+        <section class="playlist-section">
+            <h3 class="playlist-header">UP NEXT</h3>
+            <ul class="playlist" id="playlist">
+                <!-- Tracks will be populated by JavaScript -->
+            </ul>
+        </section>
+
+        <!-- Hidden Audio Element -->
+        <audio id="audioPlayer" preload="metadata"></audio>
+    </div>
+
+    <!-- Remix Panel -->
+    <div class="remix-panel" id="remixPanel">
+        <div class="remix-panel-header">
+            <h2>🎨 Remix Studio</h2>
+            <button class="close-panel-btn" id="closePanelBtn">✕</button>
+        </div>
+
+        <div class="remix-panel-content">
+            <!-- Color Scheme Shuffle -->
+            <section class="remix-section">
+                <h3>Color Scheme</h3>
+                <p class="section-description">Randomize your track colors for a fresh vibe</p>
+                <button class="shuffle-colors-btn" id="shuffleColorsBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M16 3H21V8M4 20L21 3M21 16V21H16M15 15L21 21M4 4L9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Shuffle Colors
+                </button>
+                <div class="current-colors" id="currentColors">
+                    <!-- Color swatches will be populated here -->
+                </div>
+            </section>
+
+            <!-- Track Selection -->
+            <section class="remix-section">
+                <h3>Track Selection</h3>
+                <p class="section-description">Choose 4 tracks from the library (4/4 selected)</p>
+                <div class="track-library" id="trackLibrary">
+                    <!-- Track options will be populated here -->
+                </div>
+            </section>
+
+            <!-- Custom Uploads -->
+            <section class="remix-section">
+                <h3>Upload Custom Tracks</h3>
+                <p class="section-description">Add up to 4 of your own tracks</p>
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" accept="audio/*" multiple style="display: none;">
+                    <button class="upload-btn" id="uploadBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 8L12 3L7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 3V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Choose Files
+                    </button>
+                    <div class="uploaded-files" id="uploadedFiles">
+                        <!-- Uploaded files will appear here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Panel Overlay -->
+    <div class="panel-overlay" id="panelOverlay"></div>
+
+    <script src="js/player.js"></script>
+</body>
+</html>

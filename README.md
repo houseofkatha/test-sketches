@@ -8,3 +8,4 @@ This is a repository that hosts the different artifacts that we are creating for
 - [flip card artifact](https://houseofkatha.github.io/test-sketches/Flip%20Card%20Artifact/index.html)
 - [vinyl radio mixer](https://houseofkatha.github.io/test-sketches/vinyl%20radio%20mixer/index.html)
 - [Move Me Artifact](https://houseofkatha.github.io/test-sketches/Move%20Me%20Artifact/index.html)
+- [Text Threshold Sketch](https://houseofkatha.github.io/test-sketches/Text%20Threshold%20Sketch/index.html)

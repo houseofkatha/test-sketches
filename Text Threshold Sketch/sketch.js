@@ -19,7 +19,7 @@ let themes = {
 let currentTheme = "mono";
 
 function setup() {
-  createCanvas(1280, 720);
+  createCanvas(windowWidth, windowHeight);
 
   video = createCapture(VIDEO);
   video.size(width + 50, height + 50);

@@ -3,7 +3,7 @@ This is a repository that hosts the different artifacts that we are creating for
 
 ## LINKS TO THEM
 
-- [mail card artifact](https://houseofkatha.github.io/test-sketches/mailcard/Index.html)
+- [mail card artifact](https://houseofkatha.github.io/test-sketches//Mail%20Card%20Artifact/Index.html)
 - [collage artifact](https://houseofkatha.github.io/test-sketches/Collage%20Artifact/)
 - [flip card artifact](https://houseofkatha.github.io/test-sketches/Flip%20Card%20Artifact/index.html)
 - [vinyl radio mixer](https://houseofkatha.github.io/test-sketches/vinyl%20radio%20mixer/index.html)

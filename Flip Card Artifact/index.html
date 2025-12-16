@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Mix-and-Match Book</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for a premium feel -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <div id="app">
+            <button id="remix-toggle-btn" class="text-btn" title="Open Remix Station"
+                style="position: absolute; top: 20px; left: 20px; z-index: 1001;">
+                Remix
+            </button>
+
+            <header class="controls" id="remix-menu">
+
+
+
+                <div class="control-group">
+                    <label for="base-bg-color">Base Color</label>
+                    <input type="color" id="base-bg-color" value="#FFD500" title="Change the revealed background color">
+                </div>
+
+                <!-- Image 1: Layer 1 Left -->
+                <div class="control-group">
+                    <label>Image 1</label>
+                    <label for="upload-img-1" class="file-upload-btn"
+                        style="cursor: pointer; padding: 5px 10px; background: rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.8rem;">Choose
+                        File</label>
+                    <input type="file" id="upload-img-1" accept="image/*" style="display: none;">
+                </div>
+
+                <!-- Image 2: Layer 1 Right -->
+                <div class="control-group">
+                    <label>Image 2</label>
+                    <label for="upload-img-2" class="file-upload-btn"
+                        style="cursor: pointer; padding: 5px 10px; background: rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.8rem;">Choose
+                        File</label>
+                    <input type="file" id="upload-img-2" accept="image/*" style="display: none;">
+                </div>
+
+                <!-- Image 3: Layer 2 Left -->
+                <div class="control-group">
+                    <label>Image 3</label>
+                    <label for="upload-img-3" class="file-upload-btn"
+                        style="cursor: pointer; padding: 5px 10px; background: rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.8rem;">Choose
+                        File</label>
+                    <input type="file" id="upload-img-3" accept="image/*" style="display: none;">
+                </div>
+
+                <!-- Image 4: Layer 2 Right -->
+                <div class="control-group">
+                    <label>Image 4</label>
+                    <label for="upload-img-4" class="file-upload-btn"
+                        style="cursor: pointer; padding: 5px 10px; background: rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.8rem;">Choose
+                        File</label>
+                    <input type="file" id="upload-img-4" accept="image/*" style="display: none;">
+                </div>
+
+                <!-- Image 5: Layer 3 Left -->
+                <div class="control-group">
+                    <label>Image 5</label>
+                    <label for="upload-img-5" class="file-upload-btn"
+                        style="cursor: pointer; padding: 5px 10px; background: rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.8rem;">Choose
+                        File</label>
+                    <input type="file" id="upload-img-5" accept="image/*" style="display: none;">
+                </div>
+
+                <!-- Image 6: Layer 3 Right -->
+                <div class="control-group">
+                    <label>Image 6</label>
+                    <label for="upload-img-6" class="file-upload-btn"
+                        style="cursor: pointer; padding: 5px 10px; background: rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.8rem;">Choose
+                        File</label>
+                    <input type="file" id="upload-img-6" accept="image/*" style="display: none;">
+                </div>
+
+                <div class="control-group">
+                    <button id="reset-btn" class="text-btn">RESET BOOK</button>
+                </div>
+            </header>
+
+            <div class="book-container">
+                <div class="book">
+                    <div class="back-cover"></div>
+                    <div class="spiral"></div>
+
+                    <!-- Row 1 -->
+                    <div class="row" id="row-1">
+
+
+                        <!-- Left Pages (3 layers) -->
+                        <div class="flip-container left layer-1">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice top left-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container left layer-2">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice top left-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container left layer-3">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice top left-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Pages (3 layers) -->
+                        <div class="flip-container right layer-1">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice top right-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container right layer-2">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice top right-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container right layer-3">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice top right-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="row" id="row-2">
+                        <!-- Left Pages (3 layers) -->
+                        <div class="flip-container left layer-1">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice mid left-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container left layer-2">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice mid left-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container left layer-3">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice mid left-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Pages (3 layers) -->
+                        <div class="flip-container right layer-1">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice mid right-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container right layer-2">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice mid right-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container right layer-3">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice mid right-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="row" id="row-3">
+                        <!-- Left Pages (3 layers) -->
+                        <div class="flip-container left layer-1">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice bot left-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container left layer-2">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice bot left-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container left layer-3">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice bot left-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Pages (3 layers) -->
+                        <div class="flip-container right layer-1">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice bot right-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container right layer-2">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice bot right-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-container right layer-3">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="image-slice bot right-slice"></div>
+                                </div>
+                                <div class="back">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="instructions">
+                <p>Click a strip to flip it.</p>
+            </div>
+        </div>
+        <script src="script.js"></script>
+</body>
+
+</html>

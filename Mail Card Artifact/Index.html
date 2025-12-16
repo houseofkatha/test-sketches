@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Card</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap"
+        rel="stylesheet">
+
+    <!-- html2canvas for PNG export -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root">
+        <!-- Remix Button -->
+        <button id="remixBtn" class="remix-btn">Remix</button>
+
+        <!-- Remix Overlay -->
+        <div id="remixOverlay" class="remix-overlay hidden">
+            <div class="remix-content">
+                <div class="remix-header">
+                    <h3>Remix Card</h3>
+                    <button id="closeRemix" class="close-btn">&times;</button>
+                </div>
+
+                <div class="control-group">
+                    <label>Card Color</label>
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="cardColorPicker" value="#F8F0D6">
+                        <span id="cardColorValue">#F8F0D6</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Stamp Color</label>
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="stampColorPicker" value="#89CFF0">
+                        <span id="stampColorValue">#89CFF0</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Background Image</label>
+                    <input type="file" id="bgImageInput" accept="image/*" class="file-input">
+                    <label for="bgImageInput" class="file-label">Upload Image</label>
+                </div>
+            </div>
+        </div>
+        <!-- Background Tiled Pattern -->
+        <div class="background-tiles" id="backgroundTiles"></div>
+
+        <div class="card-wrapper">
+            <!-- Flip Button -->
+            <button class="flip-btn" onclick="flipCard()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" />
+                    <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                    <path d="M16 21h5v-5" />
+                </svg>
+                Flip for other side
+            </button>
+
+            <div class="card-container">
+                <div class="card-inner" id="cardInner">
+                    <!-- Front Side - Image + Message -->
+                    <div class="card-face card-front" id="cardFront">
+                        <div class="front-content">
+                            <div class="upload-area" id="uploadArea"
+                                onclick="document.getElementById('imageInput').click()">
+                                <div class="upload-placeholder" id="uploadPlaceholder">Click to upload image</div>
+                                <img id="uploadedImage" class="uploaded-image" style="display: none;">
+                            </div>
+                            <input type="file" id="imageInput" class="hidden-input" accept="image/*">
+
+                            <div class="front-message-area">
+                                <label>Message</label>
+                                <input type="text" class="front-message-text" id="frontMessageInput"
+                                    placeholder="INSERT MESSAGE">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back Side - Name, Date, Message, Signature, Stamp -->
+                    <div class="card-face card-back" id="cardBack">
+                        <div class="mail-header">
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input type="text" class="mail-input" id="nameInput" placeholder="YOUR NAME HERE">
+                            </div>
+                            <div class="input-group">
+                                <label>Date</label>
+                                <div class="mail-date" id="dateDisplay"></div>
+                            </div>
+                        </div>
+
+                        <div class="message-area">
+                            <label>Message</label>
+                            <textarea class="message-lines" id="messageInput"></textarea>
+                        </div>
+
+                        <div class="footer-area">
+                            <div class="signature-box" id="signatureBox">
+                                <span class="signature-label">Signature</span>
+                                <canvas id="signatureCanvas" width="300" height="100"></canvas>
+                            </div>
+
+                            <div class="stamp-box" id="stampBox">
+                                <div class="stamp-curved-text">
+                                    This message is brought to you by
+                                </div>
+                                <div class="stamp-text" id="stampText">INSERT NAME</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="randomizeColors()">Randomize Colors</button>
+            <button onclick="resetCard()">Reset</button>
+            <button onclick="saveAsPNG()">Save as PNG</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

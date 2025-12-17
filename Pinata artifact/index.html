@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Piñata</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <img id="customCursor" src="bat.svg" alt="cursor">
+    <img id="actionOverlay" src="action.png" alt="action overlay">
+    <img id="bgOverlay" src="halftone.png" alt="texture overlay">
+    <canvas id="canvas"></canvas>
+
+    <div class="ui-overlay">
+        <div id="hitText">HIT ME</div>
+        <button id="resetBtn">RESET</button>
+        <button id="captureBtn" style="display: none;">CAPTURE</button>
+        <button id="remixBtn">REMIX</button>
+
+        <div id="remixMenu">
+            <div class="menu-section">
+                <h3>CUSTOM IMAGE</h3>
+                <input type="file" id="imageInput" accept="image/*">
+                <button class="menu-button" id="uploadBtn">📁 ADD PHOTO</button>
+                <button class="menu-button" id="cameraBtn">📸 TAKE PHOTO</button>
+            </div>
+
+            <div class="menu-section">
+                <h3>BACKGROUND COLOR</h3>
+                <div class="color-picker-row">
+                    <input type="color" id="backgroundColorPicker" value="#2f2f2f" aria-label="Choose background color">
+                    <input type="text" id="backgroundColorText" value="#2f2f2f" maxlength="7"
+                        aria-label="Enter hex color">
+                </div>
+                <button class="menu-button" id="epilepsyBtn" style="margin-top: 10px;">⚠️ EPILEPSY WARNING</button>
+                <button class="menu-button" id="randomColorBtn" style="margin-top: 5px;">🎨 RANDOMISE PIÑATA</button>
+            </div>
+
+            <div class="menu-section">
+                <h3>EMOJI TYPE</h3>
+                <div class="emoji-options">
+                    <div class="emoji-option">
+                        <input type="radio" name="emoji" id="candy" value="candy">
+                        <label for="candy">🍬 CANDY</label>
+                    </div>
+                    <div class="emoji-option">
+                        <input type="radio" name="emoji" id="party" value="party">
+                        <label for="party">🎉 PARTY</label>
+                    </div>
+                    <div class="emoji-option">
+                        <input type="radio" name="emoji" id="fruits" value="fruits">
+                        <label for="fruits">🍎 FRUITS</label>
+                    </div>
+                    <div class="emoji-option">
+                        <input type="radio" name="emoji" id="hearts" value="hearts">
+                        <label for="hearts">❤️ HEARTS</label>
+                    </div>
+                    <div class="emoji-option">
+                        <input type="radio" name="emoji" id="angry" value="angry" checked>
+                        <label for="angry">😡 ANGRY</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
